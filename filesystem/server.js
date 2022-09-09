@@ -32,7 +32,7 @@ app.get("/write", (req,res) =>{
     let folderDate = today.getDate();
 
     //create folder with month_date
-    let folder =`/filesystem/${folderMonth}_${folderDate}`;
+    let folder =`https://github.com/Deepika2308/day33-Nodejs-files/tree/master/filesystem/${folderMonth}_${folderDate}`;
     
     //create directory if not exists
     try{
