@@ -38,14 +38,11 @@ app.get("/write", (req,res) =>{
     try{
         if(!fs.existsSync(folder)){
             fs.mkdirSync(folder);
-            console.log("folder created")
         }
     }catch(err){
         console.log(err);
     }
     
-    
-    console.log(`folder is ${folderDate}`);
     //getting current timestamp
     let content = today.toString();
     
@@ -55,17 +52,13 @@ app.get("/write", (req,res) =>{
     let date = today.toISOString();
     let istDate = date.split("T")[0];
     let splitDate = istDate.split("-");
-    let resDate = splitDate.join(".")
-    console.log(resDate);
-    
-    // console.log(`ist date ${splitDate}`);
+    let resDate = splitDate.join(".");
     
     //convert ISO time to IST
     let istTime = today.toLocaleTimeString();
     let splitTime = istTime.split(":");
     
     let resTime =splitTime.join(".");
-    console.log(`time is ${resTime}`);
 
     //write file
     fs.writeFile(`${folder}/${resDate}-${resTime}.txt`,content,(err) =>{
@@ -81,7 +74,7 @@ app.get("/write", (req,res) =>{
 app.get("/read", (req,res) =>{
     //get folder name from request body
     let foldername = req.body;
-    console.log(foldername.fname);
+    
     let folderName = foldername.fname;
 
     fs.readdir(folderName,(err,files) =>{
@@ -95,7 +88,6 @@ app.get("/read", (req,res) =>{
             files.forEach((file,index) =>{
                 let key=`file${index+1}`;
                 obj[key]=file;
-                console.log(arr);
             })
             arr.push(obj);
             res.send(arr);
