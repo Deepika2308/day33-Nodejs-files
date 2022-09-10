@@ -7,17 +7,17 @@ const app= express();
 app.use(express.json());
 const PORT = process.env.PORT;
 
-let content = `This is an API to read and write to files.
-Append /write to the url to write files.
-Append /read to the url read files, provide folder name in the request body(postman) as ----
-method - GET ---- 
-data - raw,json ---- 
-body - {
-    "fname": "7_12"
+let content = `This is an API to read and write to files.<br/>
+Append /write to the url to write files.<br/>
+Append /read to the url read files, provide folder name in the request body(postman) as below <br/>
+method - GET <br/>
+data - raw,json <br/> 
+body - { <br/>
+    "fname": "7_12" <br/>
 }`
 
 app.get("/",(req,res) =>{
-    res.send(content);
+    res.send(`${content}`);
 })
 
 app.get("/write", (req,res) =>{
